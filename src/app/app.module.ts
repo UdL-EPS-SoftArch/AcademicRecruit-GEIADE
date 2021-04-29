@@ -24,6 +24,7 @@ import { UserRegisterComponent } from './user/user-register/user-register.compon
 import { UserEditComponent } from './user/user-edit/user-edit.component';
 import { UserDeleteComponent } from './user/user-delete/user-delete.component';
 import { UserSearchComponent } from './user/user-search/user-search.component';
+import { DocumentListComponent } from './document/document-list/document-list.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { UserSearchComponent } from './user/user-search/user-search.component';
     UserRegisterComponent,
     UserEditComponent,
     UserDeleteComponent,
-    UserSearchComponent
+    UserSearchComponent,
+    DocumentListComponent
   ],
   imports: [
     BrowserModule,
