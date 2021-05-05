@@ -1,0 +1,21 @@
+<h4 class="display-4">Candidates</h4>
+<p class="lead mb-4">These are all the current Candidatesin AcademicRecruit.</p>
+
+<div class="card mb-1" *ngFor="let candidate of candidates">
+  <div class="card-block row m-1 col-12">
+    <div class="card-body row align-items-center">
+      <div class="col-6 mt-1">
+        <h6 class="card-subtitle text-muted">Candidates</h6>
+        <a class="card-text" [routerLink]="['/candidates', candidate.id]">{{candidate.id}}</a>
+      </div>
+      <div class="col-6 mt-1">
+        <h6 class="card-subtitle text-muted">Name</h6>
+        <p class="card-text">{{candidate.name}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ngb-pagination class="d-flex justify-content-center"
+                [(page)]="page" [pageSize]="pageSize" [collectionSize]="totalCandidates"
+                (pageChange)="changePage()"></ngb-pagination>
