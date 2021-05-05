@@ -25,7 +25,8 @@ export class SelectionProcessCreateComponent implements OnInit {
   onSubmit(): void {
     this.selectionProcessService.create(this.selectionProcess).subscribe(
       (newSelectionProcess: SelectionProcess) => {
-        this.router.navigate(['/selectionProcess/']);
+        // TODO: Navigate to selectionProcess detail when route defined
+        this.router.navigate(['/about/']);
       }
     );
   }

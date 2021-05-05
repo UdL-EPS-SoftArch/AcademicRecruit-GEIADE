@@ -1,5 +1,4 @@
 import { Injectable, Injector } from '@angular/core';
-import { Observable } from 'rxjs/internal/Observable';
 import { RestService } from '@lagoshny/ngx-hal-client';
 import { SelectionProcess } from './selection-process';
 

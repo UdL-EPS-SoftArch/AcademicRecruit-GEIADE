@@ -15,6 +15,7 @@ import { AuthInterceptor } from './login-basic/auth-interceptor';
 
 import { AuthenticationBasicService } from './login-basic/authentication-basic.service';
 import { UserService } from './user/user.service';
+import { SelectionProcessService } from './selection-process/selection-process.service';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -24,6 +25,7 @@ import { UserRegisterComponent } from './user/user-register/user-register.compon
 import { UserEditComponent } from './user/user-edit/user-edit.component';
 import { UserDeleteComponent } from './user/user-delete/user-delete.component';
 import { UserSearchComponent } from './user/user-search/user-search.component';
+import { SelectionProcessCreateComponent } from './selection-process/selection-process-create/selection-process-create.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { UserSearchComponent } from './user/user-search/user-search.component';
     UserRegisterComponent,
     UserEditComponent,
     UserDeleteComponent,
-    UserSearchComponent
+    UserSearchComponent,
+    SelectionProcessCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +57,7 @@ import { UserSearchComponent } from './user/user-search/user-search.component';
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
     { provide: 'ExternalConfigurationService', useClass: ExternalConfigurationService },
-    AuthenticationBasicService, LoggedInGuard, UserService
+    AuthenticationBasicService, LoggedInGuard, UserService, SelectionProcessService
   ],
   bootstrap: [AppComponent]
 })
