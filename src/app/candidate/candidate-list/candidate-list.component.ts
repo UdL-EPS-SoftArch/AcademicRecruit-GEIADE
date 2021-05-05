@@ -23,15 +23,15 @@ export class CandidateListComponent implements OnInit {
               private candidates: CandidateService) { }
 
   ngOnInit(): void {
-    this.candidateService.getAll({size: this.pageSize, sort: this.sorting, params: [{key: 'page', value: 0}]}).subscribe(
+    this.candidatesService.getAll({size: this.pageSize, sort: this.sorting, params: [{key: 'page', value: 0}]}).subscribe(
       (candidates: Candidate[]) => {
         this.candidates = candidates;
-        this.totalCandidates = this.candidateService.totalElement();
+        this.totalCandidates = this.candidatesService.totalElement();
       });
   }
 
   changePage(): void {
-    this.candidateService.page(this.page - 1).subscribe(
+    this.candidatesService.page(this.page - 1).subscribe(
       (candidates: Candidate[]) => {
         this.candidates = candidates;
       });
