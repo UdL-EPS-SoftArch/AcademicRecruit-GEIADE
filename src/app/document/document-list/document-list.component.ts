@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Location} from '@angular/common';
 import {Document} from '../document';
 import {Sort} from '@lagoshny/ngx-hal-client';
@@ -17,21 +17,27 @@ export class DocumentListComponent implements OnInit {
   public page = 1;
   public totalDocuments = 0;
   private sorting: Sort[] = [{ path: 'id', order: 'ASC' }];
+  private selectionProcessId: string;
 
-  constructor(private router: Router,
+  constructor(private route: ActivatedRoute,
+              private router: Router,
               private location: Location,
-              private documents: DocumentService) { }
+              private documentService: DocumentService) { }
 
   ngOnInit(): void {
-    this.documentsService.getAll({size: this.pageSize, sort: this.sorting, params: [{key: 'page', value: 0}]}).subscribe(
+    this.selectionProcessId = this.route.snapshot.paramMap.get('id');
+    const selectionProcess = new SelectionProcess();
+    selectionProcess.uri = '/selectionProcess/' + this.selectionProcessId;
+    this.documentService.findBySelectionProcess(selectionProcess,
+      {size: this.pageSize, sort: this.sorting, params: [{key: 'page', value: 0}]}).subscribe(
       (documents: Document[]) => {
         this.documents = documents;
-        this.totalDocuments = this.documentsService.totalElement();
+        this.totalDocuments = this.documentService.totalElement();
       });
   }
 
   changePage(): void {
-    this.documentsService.page(this.page - 1).subscribe(
+    this.documentService.page(this.page - 1).subscribe(
       (documents: Document[]) => {
         this.documents = documents;
       });
