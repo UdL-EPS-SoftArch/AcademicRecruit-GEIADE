@@ -3,6 +3,7 @@ import {HalOptions, RestService} from '@lagoshny/ngx-hal-client';
 import {Document} from './document';
 import { Observable } from 'rxjs/internal/Observable';
 import {User} from '../login-basic/user';
+import {SelectionProcess} from '../selection-process/selection-process';
 
 @Injectable({
   providedIn: 'root'

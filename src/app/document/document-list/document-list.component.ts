@@ -4,6 +4,7 @@ import {Location} from '@angular/common';
 import {Document} from '../document';
 import {Sort} from '@lagoshny/ngx-hal-client';
 import {DocumentService} from '../document.service';
+import {SelectionProcess} from '../../selection-process/selection-process';
 
 @Component({
   selector: 'app-document-list',

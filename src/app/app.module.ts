@@ -29,6 +29,10 @@ import { DocumentListComponent } from './document/document-list/document-list.co
 import { SelectionProcessCreateComponent } from './selection-process/selection-process-create/selection-process-create.component';
 import {DocumentService} from './document/document.service';
 
+// @ts-ignore
+// @ts-ignore
+// @ts-ignore
+// @ts-ignore
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,4 +68,4 @@ import {DocumentService} from './document/document.service';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
