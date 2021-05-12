@@ -26,6 +26,7 @@ import { UserEditComponent } from './user/user-edit/user-edit.component';
 import { UserDeleteComponent } from './user/user-delete/user-delete.component';
 import { UserSearchComponent } from './user/user-search/user-search.component';
 import { SelectionProcessCreateComponent } from './selection-process/selection-process-create/selection-process-create.component';
+import { SelectionProcessDetailComponent } from './selection-process/selection-process-detail/selection-process-detail.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { SelectionProcessCreateComponent } from './selection-process/selection-p
     UserEditComponent,
     UserDeleteComponent,
     UserSearchComponent,
-    SelectionProcessCreateComponent
+    SelectionProcessCreateComponent,
+    SelectionProcessDetailComponent
   ],
   imports: [
     BrowserModule,
