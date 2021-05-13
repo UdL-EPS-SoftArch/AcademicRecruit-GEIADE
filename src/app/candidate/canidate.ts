@@ -6,7 +6,7 @@ export class Candidate extends Resource {
   dni: string;
   
 
-  // candidate: Candidate;
+  candidate: Candidate;
   // selectionProcess: SelectionProcess;
   user: User;
 
