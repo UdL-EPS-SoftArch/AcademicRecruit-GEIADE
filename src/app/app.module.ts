@@ -28,6 +28,12 @@ import { UserSearchComponent } from './user/user-search/user-search.component';
 import { DocumentListComponent } from './document/document-list/document-list.component';
 import { SelectionProcessCreateComponent } from './selection-process/selection-process-create/selection-process-create.component';
 import {DocumentService} from './document/document.service';
+// import {DocumentCreateComponent} from './document/document-create/document-create.component';
+// import {DocumentEditComponent} from './document/document-edit/document-edit.component';
+
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatDialogModule } from '@angular/material/dialog';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 // @ts-ignore
 // @ts-ignore
@@ -44,6 +50,8 @@ import {DocumentService} from './document/document.service';
     UserDeleteComponent,
     UserSearchComponent,
     DocumentListComponent,
+    // DocumentCreateComponent,
+    // DocumentEditComponent,
     SelectionProcessCreateComponent
   ],
   imports: [
@@ -59,6 +67,9 @@ import {DocumentService} from './document/document.service';
     ErrorHandlerModule,
     NgbModule,
     ReactiveFormsModule,
+    MatProgressSpinnerModule,
+    MatDialogModule,
+    BrowserAnimationsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

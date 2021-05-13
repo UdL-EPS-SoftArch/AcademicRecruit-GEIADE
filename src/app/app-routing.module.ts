@@ -10,6 +10,8 @@ import { UserEditComponent } from './user/user-edit/user-edit.component';
 import { UserDeleteComponent } from './user/user-delete/user-delete.component';
 import {DocumentListComponent} from './document/document-list/document-list.component';
 import { SelectionProcessCreateComponent } from './selection-process/selection-process-create/selection-process-create.component';
+import {DocumentCreateComponent} from './document/document-create/document-create.component';
+import {DocumentEditComponent} from './document/document-edit/document-edit.component';
 
 const routes: Routes = [
   { path: 'users/create', component: UserRegisterComponent},
@@ -18,6 +20,8 @@ const routes: Routes = [
   { path: 'users/:id', component: UserDetailComponent, canActivate: [LoggedInGuard]},
   { path: 'users', component: UserListComponent, canActivate: [LoggedInGuard]},
   { path: 'selectionProcesses/:id/documents', component: DocumentListComponent, canActivate: [LoggedInGuard]},
+  { path: 'selectionProcesses/:id/documents/create', component: DocumentCreateComponent, canActivate: [LoggedInGuard]},
+  { path: 'selectionProcesses/:id/documents/:docid', component: DocumentEditComponent, canActivate: [LoggedInGuard]},
   { path: 'selectionProcesses/create', component: SelectionProcessCreateComponent, canActivate: [LoggedInGuard]},
   { path: 'about', component: AboutComponent},
   { path: '404', component: NotFoundComponent},

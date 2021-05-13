@@ -3,7 +3,7 @@
   transition-duration: 0.5s;
   height: 100%;
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .card:hover {

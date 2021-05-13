@@ -6,11 +6,12 @@
     <div class="card-body row align-items-center">
       <div class="col-4 mt-1">
         <h6 class="card-subtitle text-muted">Documents</h6>
-        <a class="card-text" [routerLink]="['/documents', document.id]">{{document.title}}</a>
+        <a class="card-text" [routerLink]="['/selectionProcesses', this.selectionProcessId, 'documents', document.id]">{{document.title}}</a>
       </div>
       <div class="col-4 mt-1">
         <h6 class="card-subtitle text-muted">DocType</h6>
-        <p class="card-text">{{document.docType}}</p>
+        <!--<p class="card-text">{{(codes | filter : {'name':document.docType})[0].value}}</p>-->
+        <p class="card-text">{{this.document.getDocTypeLabel()}}</p>
       </div>
 
       <div *ngIf="document.path != null; then thenBlock else elseBlock"></div>

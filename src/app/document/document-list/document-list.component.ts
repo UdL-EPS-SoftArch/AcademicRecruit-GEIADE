@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Location} from '@angular/common';
-import {Document} from '../document';
+import {DOC_TYPES, Document} from '../document';
 import {Sort} from '@lagoshny/ngx-hal-client';
 import {DocumentService} from '../document.service';
 import {SelectionProcess} from '../../selection-process/selection-process';
 import {environment} from '../../../environments/environment';
 import {SelectionProcessService} from '../../selection-process/selection-process.service';
+import {FileService} from '../file.service';
 
 @Component({
   selector: 'app-document-list',
@@ -22,12 +23,14 @@ export class DocumentListComponent implements OnInit {
   private sorting: Sort[] = [{ path: 'id', order: 'ASC' }];
   private selectionProcessId: string;
   public selectionProcessEntity: SelectionProcess;
+  public codes: any[] = DOC_TYPES;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
               private location: Location,
               private documentService: DocumentService,
-              private selectionProcessService: SelectionProcessService) { }
+              private selectionProcessService: SelectionProcessService,
+              private fileService: FileService) { }
 
   ngOnInit(): void {
     this.selectionProcessId = this.route.snapshot.paramMap.get('id');
@@ -56,7 +59,7 @@ export class DocumentListComponent implements OnInit {
   }
 
   onOpenFile(fileId: number): void {
-    window.open(environment.API + '/files/' + fileId, '_blank');
+    this.fileService.openFile(fileId.toString());
   }
 
 }
