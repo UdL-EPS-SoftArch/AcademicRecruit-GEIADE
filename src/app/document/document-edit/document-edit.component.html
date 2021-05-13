@@ -1,0 +1,62 @@
+<h4 class="display-4">Documents</h4>
+<p class="lead mb-4">Create a document for selection process with vacancy {{this.selectionProcessEntity.vacancy}}.</p>
+
+<ng-template #dialogRef>
+  <h2 mat-dialog-title>Uploading file...</h2>
+  <mat-dialog-content style="display: flex;justify-content: center;align-items: center;"><mat-progress-spinner mode="indeterminate"></mat-progress-spinner></mat-dialog-content>
+
+</ng-template>
+
+<form id="document-form" (ngSubmit)="onSubmit()" #form="ngForm">
+  <fieldset>
+
+    <!-- Title input -->
+    <div class="form-group" [class.was-validated]="title.dirty || title.touched">
+      <label class="control-label" for="title">Title*</label>
+      <input id="title" name="title" type="text" class="form-control" required
+             [(ngModel)]="documentEntity.title" #title="ngModel">
+      <div class="invalid-feedback">A title is required</div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label" for="docTypes">Document type*</label>
+      <select class="form-control" id="docTypes" (change)="saveCode($event)" required>
+        <option *ngFor="let c of codes" [value]="c.value" >{{c.value}}</option>
+      </select>
+      <div class="invalid-feedback">A document type is required</div>
+    </div>
+
+    <!-- Candidate (not required)  -->
+    <!--<div class="form-group" [class.was-validated]="username.dirty || username.touched">
+      <label class="control-label" for="username">Username</label>
+      <input id="username" name="username" type="text" class="form-control"
+             [(ngModel)]="user.id" #username="ngModel">
+      <div class="invalid-feedback">A username is required</div>
+    </div>-->
+
+    <div class="form-group">
+      <label class="control-label" for="docTypes">Attached document</label>
+      <div *ngIf="documentEntity.path != null; then thenBlock else elseBlock"></div>
+      <ng-template #thenBlock>
+        <p class="card-subtitle text-muted">{{documentEntity.length}} bytes</p>
+        <button type="button" (click)="onOpenFile(documentEntity.id)" class="btn m-1 btn-outline-dark pull-right" id="get_file">Download file</button>
+      </ng-template>
+      <ng-template #elseBlock><div class="col-4 mt-1">
+        <p class="card-subtitle text-muted">No file has been uploaded</p>
+      </div></ng-template>
+
+      <input style="display: none;" type="file" (change)="handleFileInput($event.target.files)" #file>
+      <button type="button" (click)="file.click()" class="btn m-1 btn-outline-dark pull-right" id="upload_file">Upload file</button>
+    </div>
+
+    <!-- Button -->
+    <div class="form-group">
+      <button id="submit" type="submit" class="btn m-1 btn-success pull-right" [disabled]="!form.form.valid">Submit</button>
+      <button id="listBtn" type="button" (click)="onCancel()" class="btn m-1 btn-outline-primary pull-right">Back</button>
+    </div>
+
+  </fieldset>
+</form>
+
+
+

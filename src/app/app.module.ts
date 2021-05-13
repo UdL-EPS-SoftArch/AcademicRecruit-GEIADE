@@ -29,7 +29,7 @@ import { DocumentListComponent } from './document/document-list/document-list.co
 import { SelectionProcessCreateComponent } from './selection-process/selection-process-create/selection-process-create.component';
 import {DocumentService} from './document/document.service';
 import {DocumentCreateComponent} from './document/document-create/document-create.component';
-// import {DocumentEditComponent} from './document/document-edit/document-edit.component';
+import {DocumentEditComponent} from './document/document-edit/document-edit.component';
 
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -51,7 +51,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     UserSearchComponent,
     DocumentListComponent,
     DocumentCreateComponent,
-    // DocumentEditComponent,
+    DocumentEditComponent,
     SelectionProcessCreateComponent
   ],
   imports: [
