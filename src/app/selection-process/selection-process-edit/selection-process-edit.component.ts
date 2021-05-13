@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SelectionProcess } from '../selection-process';
 import { SelectionProcessService } from '../selection-process.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-selection-process-edit',
@@ -9,7 +10,7 @@ import { SelectionProcessService } from '../selection-process.service';
   styleUrls: []
 })
 export class SelectionProcessEditComponent implements OnInit {
-  private selectionProcess: SelectionProcess;
+  public selectionProcess: SelectionProcess;
   public id: string;
 
 
@@ -31,6 +32,10 @@ export class SelectionProcessEditComponent implements OnInit {
         this.router.navigate(['/selectionProcesses/' + this.id]);
       }
     );
+  }
+
+  onCancel(): void {
+    this.location.back();
   }
 
 }
