@@ -1,0 +1,38 @@
+<h4 class="display-4">Documents</h4>
+<p class="lead mb-4">Create a document for selection process with vacancy {{this.selectionProcessEntity.vacancy}}.</p>
+
+<form id="document-form" (ngSubmit)="onSubmit()" #form="ngForm">
+  <fieldset>
+
+    <!-- Title input -->
+    <div class="form-group" [class.was-validated]="title.dirty || title.touched">
+      <label class="control-label" for="title">Title*</label>
+      <input id="title" name="title" type="text" class="form-control" required
+             [(ngModel)]="document.title" #title="ngModel">
+      <div class="invalid-feedback">A title is required</div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label" for="docTypes">Document type*</label>
+      <select class="form-control" id="docTypes" (change)="saveCode($event)" required>
+        <option *ngFor="let c of codes" [value]="c.value" >{{c.value}}</option>
+      </select>
+      <div class="invalid-feedback">A document type is required</div>
+    </div>
+
+    <!-- Candidate (not required)  -->
+    <!--<div class="form-group" [class.was-validated]="username.dirty || username.touched">
+      <label class="control-label" for="username">Username</label>
+      <input id="username" name="username" type="text" class="form-control"
+             [(ngModel)]="user.id" #username="ngModel">
+      <div class="invalid-feedback">A username is required</div>
+    </div>-->
+
+    <!-- Button -->
+    <div class="form-group">
+      <button id="submit" type="submit" class="btn m-1 btn-success pull-right" [disabled]="!form.form.valid">Submit</button>
+      <button id="listBtn" type="button" (click)="onCancel()" class="btn m-1 btn-outline-primary pull-right">Back</button>
+    </div>
+
+  </fieldset>
+</form>
