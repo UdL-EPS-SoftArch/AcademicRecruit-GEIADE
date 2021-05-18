@@ -14,8 +14,8 @@ export class SelectionProcessCreateComponent implements OnInit {
   public selectionProcess: SelectionProcess;
 
   constructor(private router: Router,
-    private location: Location,
-    private selectionProcessService: SelectionProcessService) {
+              private location: Location,
+              private selectionProcessService: SelectionProcessService) {
 }
 
   ngOnInit(): void {
