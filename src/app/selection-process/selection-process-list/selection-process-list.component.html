@@ -1,4 +1,4 @@
-<div class="card mb-1" *ngFor="let selectionProcess of selectionProcesses">
+<div class="card mb-1" *ngFor="let selectionProcess of selectionProcesses  | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
   <div class="card-block row m-1 col-12">
     <div class="card-body row align-items-center">
       <div class="col-6 mt-1">
@@ -15,4 +15,4 @@
 
 <ngb-pagination class="d-flex justify-content-center"
                 [(page)]="page" [pageSize]="pageSize" [collectionSize]="totalSelectionProcesses"
-                (pageChange)="changePage()"></ngb-pagination>
+></ngb-pagination>

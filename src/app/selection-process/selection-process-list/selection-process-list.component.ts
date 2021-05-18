@@ -33,8 +33,10 @@ export class SelectionProcessListComponent implements OnInit {
   }
 
   changePage(): void {
-      this.selectionProcessService.page(this.page - 1).subscribe(
-        (selectionProcesses: SelectionProcess[]) => this.selectionProcesses = selectionProcesses);
+    this.selectionProcessService.page(this.page - 1).subscribe(
+      (selectionProcesses: SelectionProcess[]) => {
+        this.selectionProcesses = selectionProcesses;
+      });
   }
 
   detail(selectionProcess: SelectionProcess): void {
