@@ -6,8 +6,8 @@ export class SelectionProcess extends Resource {
 
   uri: string;
 
-  constructor(values: object = {}) {
-    super();
-    Object.assign(this as any, values);
-  }
+    constructor(values: object = {}) {
+        super();
+        Object.assign(this as any, values);
+    }
 }
