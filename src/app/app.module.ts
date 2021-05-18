@@ -29,9 +29,10 @@ import { DocumentListComponent } from './document/document-list/document-list.co
 import { CandidateListComponent } from './candidate/candidate-list/candidate-list.component';
 
 import { SelectionProcessCreateComponent } from './selection-process/selection-process-create/selection-process-create.component';
-import {DocumentService} from './document/document.service';
-import {DocumentCreateComponent} from './document/document-create/document-create.component';
-import {DocumentEditComponent} from './document/document-edit/document-edit.component';
+import { DocumentService } from './document/document.service';
+import { DocumentCreateComponent } from './document/document-create/document-create.component';
+import { DocumentEditComponent } from './document/document-edit/document-edit.component';
+import { SelectionProcessEditComponent } from './selection-process/selection-process-edit/selection-process-edit.component';
 import { SelectionProcessDetailComponent } from './selection-process/selection-process-detail/selection-process-detail.component';
 
 @NgModule({
@@ -46,11 +47,11 @@ import { SelectionProcessDetailComponent } from './selection-process/selection-p
     UserSearchComponent,
     CandidateListComponent,
     SelectionProcessCreateComponent,
+    SelectionProcessEditComponent,
     SelectionProcessDetailComponent,
     DocumentListComponent,
     DocumentCreateComponent,
-    DocumentEditComponent,
-    SelectionProcessCreateComponent
+    DocumentEditComponent
   ],
   imports: [
     BrowserModule,
