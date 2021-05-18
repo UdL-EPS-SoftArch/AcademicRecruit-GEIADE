@@ -8,12 +8,9 @@ import { UserDetailComponent } from './user/user-detail/user-detail.component';
 import { UserRegisterComponent } from './user/user-register/user-register.component';
 import { UserEditComponent } from './user/user-edit/user-edit.component';
 import { UserDeleteComponent } from './user/user-delete/user-delete.component';
-<<<<<<< HEAD
 import {CandidateListComponent} from './candidate/candidate-list/candidate-list.component';
-=======
 import { SelectionProcessCreateComponent } from './selection-process/selection-process-create/selection-process-create.component';
 import { SelectionProcessDetailComponent } from './selection-process/selection-process-detail/selection-process-detail.component';
->>>>>>> main
 
 const routes: Routes = [
   { path: 'users/create', component: UserRegisterComponent},
@@ -21,12 +18,9 @@ const routes: Routes = [
   { path: 'users/:id/edit', component: UserEditComponent, canActivate: [LoggedInGuard]},
   { path: 'users/:id', component: UserDetailComponent, canActivate: [LoggedInGuard]},
   { path: 'users', component: UserListComponent, canActivate: [LoggedInGuard]},
-<<<<<<< HEAD
   { path: 'candidates', component: CandidateListComponent, canActivate: [LoggedInGuard]},
-=======
   { path: 'selectionProcesses/create', component: SelectionProcessCreateComponent, canActivate: [LoggedInGuard]},
   { path: 'selectionProcesses/:id', component: SelectionProcessDetailComponent, canActivate: [LoggedInGuard]},
->>>>>>> main
   { path: 'about', component: AboutComponent},
   { path: '404', component: NotFoundComponent},
   { path: '', redirectTo: 'about', pathMatch: 'full'},

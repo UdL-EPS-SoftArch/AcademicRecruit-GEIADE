@@ -25,13 +25,10 @@ import { UserRegisterComponent } from './user/user-register/user-register.compon
 import { UserEditComponent } from './user/user-edit/user-edit.component';
 import { UserDeleteComponent } from './user/user-delete/user-delete.component';
 import { UserSearchComponent } from './user/user-search/user-search.component';
-<<<<<<< HEAD
 import { CandidateListComponent } from './candidate/candidate-list/candidate-list.component';
 
-=======
 import { SelectionProcessCreateComponent } from './selection-process/selection-process-create/selection-process-create.component';
 import { SelectionProcessDetailComponent } from './selection-process/selection-process-detail/selection-process-detail.component';
->>>>>>> main
 
 @NgModule({
   declarations: [
@@ -43,12 +40,9 @@ import { SelectionProcessDetailComponent } from './selection-process/selection-p
     UserEditComponent,
     UserDeleteComponent,
     UserSearchComponent,
-<<<<<<< HEAD
-    CandidateListComponent
-=======
+    CandidateListComponent,
     SelectionProcessCreateComponent,
     SelectionProcessDetailComponent
->>>>>>> main
   ],
   imports: [
     BrowserModule,
