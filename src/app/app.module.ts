@@ -26,10 +26,13 @@ import { UserEditComponent } from './user/user-edit/user-edit.component';
 import { UserDeleteComponent } from './user/user-delete/user-delete.component';
 import { UserSearchComponent } from './user/user-search/user-search.component';
 import { DocumentListComponent } from './document/document-list/document-list.component';
+import { CandidateListComponent } from './candidate/candidate-list/candidate-list.component';
+
 import { SelectionProcessCreateComponent } from './selection-process/selection-process-create/selection-process-create.component';
 import {DocumentService} from './document/document.service';
 import {DocumentCreateComponent} from './document/document-create/document-create.component';
 import {DocumentEditComponent} from './document/document-edit/document-edit.component';
+import { SelectionProcessDetailComponent } from './selection-process/selection-process-detail/selection-process-detail.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +44,9 @@ import {DocumentEditComponent} from './document/document-edit/document-edit.comp
     UserEditComponent,
     UserDeleteComponent,
     UserSearchComponent,
+    CandidateListComponent,
+    SelectionProcessCreateComponent,
+    SelectionProcessDetailComponent,
     DocumentListComponent,
     DocumentCreateComponent,
     DocumentEditComponent,
