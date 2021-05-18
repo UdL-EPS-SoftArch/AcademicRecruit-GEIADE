@@ -7,10 +7,10 @@ import {Router} from '@angular/router';
 @Component({
   selector: 'app-selection-process-list',
   templateUrl: './selection-process-list.component.html',
-  styleUrls: ['./selection-process-list.component.css']
+  styleUrls: []
 })
 export class SelectionProcessListComponent implements OnInit {
-  public selectionprocesses: SelectionProcess[] = [];
+  public selectionProcesses: SelectionProcess[] = [];
   public pageSize = 5;
   public page = 1;
   public totalSelectionProcesses = 0;
@@ -19,26 +19,26 @@ export class SelectionProcessListComponent implements OnInit {
 
   constructor(
     public router: Router,
-    private selectionprocessService: SelectionProcessService){
+    private selectionProcessService: SelectionProcessService){
   }
 
 
   ngOnInit(): void {
-    this.selectionprocessService.getAll({sort: this.sorting}).subscribe(
-      (selectionprocesses: SelectionProcess[]) => {
-        this.selectionprocesses = selectionprocesses;
-        this.totalSelectionProcesses = this.selectionprocessService.totalElement();
+    this.selectionProcessService.getAll({sort: this.sorting}).subscribe(
+      (selectionProcesses: SelectionProcess[]) => {
+        this.selectionProcesses = selectionProcesses;
+        this.totalSelectionProcesses = this.selectionProcessService.totalElement();
       }
     );
   }
 
   changePage(): void {
-    this.selectionprocessService.page(this.page - 1).subscribe(
-      (selectionprocesses: SelectionProcess[]) => this.selectionprocesses = selectionprocesses);
+      this.selectionProcessService.page(this.page - 1).subscribe(
+        (selectionProcesses: SelectionProcess[]) => this.selectionProcesses = selectionProcesses);
   }
 
-  detail(selectionprocess: SelectionProcess): void {
-    this.router.navigate(['selectionprocesses', selectionprocess.id]);
+  detail(selectionProcess: SelectionProcess): void {
+    this.router.navigate(['selectionProcesses', selectionProcess.id]);
   }
 
 }
