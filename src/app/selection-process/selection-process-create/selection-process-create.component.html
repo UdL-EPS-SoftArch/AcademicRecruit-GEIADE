@@ -1,0 +1,22 @@
+<h4 class="display-4">Create a selection process</h4>
+
+<form id="selection-process-form" (ngSubmit)="onSubmit()" #form="ngForm">
+  <fieldset>
+
+    <!-- Vacancy input -->
+    <div class="form-group">
+      <label class="control-label" for="vacancy">Vacancy*</label>
+      <input id="title" name="title" type="text" class="form-control" required
+             [(ngModel)]="selectionProcess.vacancy">
+      <div class="invalid-feedback">Vacancy is required</div>
+    </div>
+
+    <!-- Button -->
+    <div class="form-group">
+      <button id="submit" type="submit" class="btn m-1 btn-success pull-right" [disabled]="!form.form.valid">Submit</button>
+      <button id="listBtn" type="button" (click)="onCancel()" class="btn m-1 btn-outline-primary pull-right">Back</button>
+    </div>
+
+
+  </fieldset>
+</form>
