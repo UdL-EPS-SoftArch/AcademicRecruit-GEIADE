@@ -29,6 +29,7 @@ import { DocumentListComponent } from './document/document-list/document-list.co
 import { CandidateListComponent } from './candidate/candidate-list/candidate-list.component';
 
 import { SelectionProcessCreateComponent } from './selection-process/selection-process-create/selection-process-create.component';
+import { SelectionProcessListComponent } from './selection-process/selection-process-list/selection-process-list.component';
 import { DocumentService } from './document/document.service';
 import { DocumentCreateComponent } from './document/document-create/document-create.component';
 import { DocumentEditComponent } from './document/document-edit/document-edit.component';
@@ -45,6 +46,8 @@ import { SelectionProcessDetailComponent } from './selection-process/selection-p
     UserEditComponent,
     UserDeleteComponent,
     UserSearchComponent,
+    SelectionProcessCreateComponent,
+    SelectionProcessListComponent,
     CandidateListComponent,
     SelectionProcessCreateComponent,
     SelectionProcessEditComponent,
@@ -75,4 +78,4 @@ import { SelectionProcessDetailComponent } from './selection-process/selection-p
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
