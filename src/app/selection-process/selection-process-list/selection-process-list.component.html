@@ -1,0 +1,20 @@
+
+<app-selection-process-list-search (emitResults)="detail($event)"></app-selection-process-list-search>
+
+<div class="card mb-1" *ngFor="let selectionProcess of selectionprocesses | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+  <div class="card-block row m-1 col-12">
+    <div class="card-body row align-items-center">
+      <div class="col-6 mt-1">
+        <h6 class="card-subtitle text-muted">Id</h6>
+        <a class="card-text" [routerLink]="['/selectionProcess', selectionProcess.id]">{{selectionProcess.id}}</a>
+      </div>
+      <div class="col-6 mt-1">
+        <h6 class="card-subtitle text-muted">Vacancy</h6>
+        <p class="card-text">{{selectionProcess.vacancy}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ngb-pagination class="d-flex justify-content-center"
+                [(page)]="page" [pageSize]="pageSize" [collectionSize]="selectionprocesses"></ngb-pagination>
