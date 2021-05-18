@@ -14,7 +14,8 @@ export class SelectionProcessEditComponent implements OnInit {
   public id: string;
 
 
-  constructor(private router: Router,
+  constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private location: Location,
     private selectionProcessService: SelectionProcessService) { }
