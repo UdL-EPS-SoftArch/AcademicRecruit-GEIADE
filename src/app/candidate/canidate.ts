@@ -3,7 +3,7 @@ import {User} from '../login-basic/user';
 
 export class Candidate extends Resource {
   name: string;
-  dni: string; 
+  dni: string;
   candidate: Candidate;
   // selectionProcess: SelectionProcess;
   user: User;
