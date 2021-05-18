@@ -44,7 +44,7 @@ export class DocumentListComponent implements OnInit {
     const selectionProcess = new SelectionProcess();
     selectionProcess.uri = '/selectionProcess/' + this.selectionProcessId;
     this.documentService.findBySelectionProcess(selectionProcess,
-      {size: this.pageSize, sort: this.sorting, params: [{key: 'page', value: 0}]}).subscribe(
+      {size: this.pageSize, sort: this.sorting, params: [{key: 'page', value: this.page - 1}]}).subscribe(
       (documents: Document[]) => {
         this.documents = documents;
         this.totalDocuments = this.documentService.totalElement();
@@ -58,8 +58,23 @@ export class DocumentListComponent implements OnInit {
       });
   }
 
-  onOpenFile(fileId: number): void {
-    this.fileService.openFile(fileId.toString());
+  onDownloadFile(fileId: number): void {
+    this.fileService.downloadFile(fileId.toString());
+  }
+
+  onOpenFile(fileId: number, mime: string): void {
+    this.fileService.openFile(fileId.toString()).subscribe(result => {
+      console.log(result);
+      const blob = new Blob([result], { type: mime});
+      const fileURL = URL.createObjectURL(blob);
+      window.open(fileURL, '_blank');
+    });
+  }
+
+  onDocumentDelete(fileId: number): void {
+    this.documentService.delete(this.documents.find(d => d.id === fileId)).subscribe(result => {
+      this.ngOnInit();
+    });
   }
 
 }

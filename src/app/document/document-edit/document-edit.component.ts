@@ -2,13 +2,14 @@ import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Location} from '@angular/common';
 import {DOC_TYPES, Document} from '../document';
-import {Sort} from '@lagoshny/ngx-hal-client';
 import {DocumentService} from '../document.service';
 import {SelectionProcess} from '../../selection-process/selection-process';
-import {environment} from '../../../environments/environment';
 import {SelectionProcessService} from '../../selection-process/selection-process.service';
 import {FileService} from '../file.service';
-import {MatDialog} from '@angular/material/dialog';
+
+import {NgbModal, ModalDismissReasons, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
+import {ErrorMessageService} from '../../error-handler/error-message.service';
+import {HttpEventType} from '@angular/common/http';
 
 @Component({
   selector: 'app-document-edit',
@@ -19,10 +20,10 @@ export class DocumentEditComponent implements OnInit {
 
   @ViewChild('dialogRef') dialogRef: TemplateRef<any>;
 
-  private selectionProcessId: string;
   private documentId: string;
   public selectionProcessEntity: SelectionProcess;
   public documentEntity: Document;
+  public percentageUpload: number;
 
   public codes: any[] = DOC_TYPES;
 
@@ -32,29 +33,21 @@ export class DocumentEditComponent implements OnInit {
               private documentService: DocumentService,
               private selectionProcessService: SelectionProcessService,
               private fileService: FileService,
-              public dialog: MatDialog) { }
+              private modalService: NgbModal,
+              private errorMessageService: ErrorMessageService) { }
 
   ngOnInit(): void {
-    this.selectionProcessId = this.route.snapshot.paramMap.get('id');
-    this.documentId = this.route.snapshot.paramMap.get('docid');
+    this.documentId = this.route.snapshot.paramMap.get('id');
 
     this.documentService.get(this.documentId).subscribe(
       (documentEntity: Document) => {
         this.documentEntity = documentEntity;
         this.selectionProcessService.getSelectionProcessFromDocument(this.documentEntity).subscribe(
           (selectionProcessEntity: SelectionProcess) => {
-            if (selectionProcessEntity.id.toString() !== this.selectionProcessId) {
-              this.location.back();
-            }
+                this.selectionProcessEntity = selectionProcessEntity;
+          }, error1 => {
+            this.location.back();
           });
-      }, error1 => {
-        this.location.back();
-      }
-    );
-
-    this.selectionProcessService.get(this.selectionProcessId).subscribe(
-      (selectionProcessEntity: SelectionProcess) => {
-        this.selectionProcessEntity = selectionProcessEntity;
       }, error1 => {
         this.location.back();
       }
@@ -64,7 +57,7 @@ export class DocumentEditComponent implements OnInit {
   onSubmit(): void {
     this.documentService.update(this.documentEntity).subscribe(
       (newDocument: Document) => {
-        this.router.navigate(['selectionProcesses/' + this.selectionProcessId + '/documents']);
+        this.router.navigate(['selectionProcesses/' + this.selectionProcessEntity.id + '/documents']);
       });
   }
 
@@ -78,21 +71,55 @@ export class DocumentEditComponent implements OnInit {
     this.documentEntity.docType = list.name;
   }
 
+  onDownloadFile(fileId: number): void {
+    this.fileService.downloadFile(fileId.toString());
+  }
+
   onOpenFile(fileId: number): void {
-    this.fileService.openFile(fileId.toString());
+    this.fileService.openFile(fileId.toString()).subscribe(result => {
+      console.log(result);
+      const blob = new Blob([result], { type: this.documentEntity.mime});
+      const fileURL = URL.createObjectURL(blob);
+      window.open(fileURL, '_blank');
+    });
+  }
+
+  onDeleteFile(fileId: number): void {
+    this.fileService.deleteFile(fileId.toString()).subscribe(next => {
+      this.ngOnInit();
+    });
   }
 
   handleFileInput(files: FileList): void {
-    const dialogRef = this.dialog.open(this.dialogRef, { disableClose: true });
+    if (files === null || files === undefined || files.length === 0) {
+      return;
+    }
 
+    const modalOpened: NgbModalRef = this.modalService.open(this.dialogRef, {backdrop: 'static', keyboard: false});
+    modalOpened.result.then((result) => {
+      console.log('Closed with result ' + result);
+    }, (reason) => {
+      console.log('Dismissed ' + reason);
+    });
 
     this.fileService.uploadFile(files.item(0), this.documentId).subscribe(
-      (a: any) => {
-        console.log('file uploaded');
-        dialogRef.close();
+      resp => {
 
-        this.ngOnInit();
-        // this.router.navigate([this.location.path()]);
+        if (resp.type === HttpEventType.Response) {
+          console.log('Upload complete');
+          modalOpened.close();
+          this.ngOnInit();
+        }
+
+        if (resp.type === HttpEventType.UploadProgress) {
+          const percentDone = Math.round(100 * resp.loaded / resp.total);
+          console.log('Progress ' + percentDone + '%');
+          this.percentageUpload = percentDone;
+        }
+      }, error => {
+        console.log(error);
+        this.errorMessageService.showErrorMessage('File couldn\'t be uploaded. Max file size is 8192KB!');
+        modalOpened.close();
       }
     );
   }

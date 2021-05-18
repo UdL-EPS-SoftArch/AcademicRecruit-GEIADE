@@ -31,14 +31,6 @@ import {DocumentService} from './document/document.service';
 import {DocumentCreateComponent} from './document/document-create/document-create.component';
 import {DocumentEditComponent} from './document/document-edit/document-edit.component';
 
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import { MatDialogModule } from '@angular/material/dialog';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-
-// @ts-ignore
-// @ts-ignore
-// @ts-ignore
-// @ts-ignore
 @NgModule({
   declarations: [
     AppComponent,
@@ -66,10 +58,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     LoginBasicModule,
     ErrorHandlerModule,
     NgbModule,
-    ReactiveFormsModule,
-    MatProgressSpinnerModule,
-    MatDialogModule,
-    BrowserAnimationsModule
+    ReactiveFormsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

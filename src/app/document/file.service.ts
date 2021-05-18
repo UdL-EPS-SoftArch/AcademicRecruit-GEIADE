@@ -3,7 +3,7 @@ import {Document} from './document';
 import { Observable } from 'rxjs/internal/Observable';
 import {User} from '../login-basic/user';
 import {SelectionProcess} from '../selection-process/selection-process';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient } from '@angular/common/http';
 import {environment} from '../../environments/environment';
 
 @Injectable({
@@ -18,11 +18,22 @@ export class FileService{
     const endpoint = environment.API + '/files/' + fileId;
     const formData: FormData = new FormData();
     formData.append('file', file, file.name);
-    return this.httpClient.post(endpoint, formData);
+    return this.httpClient.post(endpoint, formData, {
+      reportProgress: true,
+      observe: 'events'
+    });
   }
 
-  public openFile(fileId: string): void {
+  public deleteFile(fileId: string): Observable<any> {
+    const endpoint = environment.API + '/files/' + fileId;
+    return this.httpClient.delete(endpoint);
+  }
+
+  public downloadFile(fileId: string): void {
     window.open(environment.API + '/files/' + fileId, '_blank');
   }
 
+  public openFile(fileId: string): Observable<any> {
+    return this.httpClient.get(environment.API + '/files/' + fileId, { responseType: 'blob'});
+  }
 }

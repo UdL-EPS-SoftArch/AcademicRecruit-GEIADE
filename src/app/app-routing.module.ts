@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'users', component: UserListComponent, canActivate: [LoggedInGuard]},
   { path: 'selectionProcesses/:id/documents', component: DocumentListComponent, canActivate: [LoggedInGuard]},
   { path: 'selectionProcesses/:id/documents/create', component: DocumentCreateComponent, canActivate: [LoggedInGuard]},
-  { path: 'selectionProcesses/:id/documents/:docid', component: DocumentEditComponent, canActivate: [LoggedInGuard]},
+  { path: 'documents/:id', component: DocumentEditComponent, canActivate: [LoggedInGuard]},
   { path: 'selectionProcesses/create', component: SelectionProcessCreateComponent, canActivate: [LoggedInGuard]},
   { path: 'about', component: AboutComponent},
   { path: '404', component: NotFoundComponent},
