@@ -42,7 +42,7 @@ export class DocumentCreateComponent implements OnInit {
   onSubmit(): void {
     this.documentService.create(this.document).subscribe(
       (newDocument: Document) => {
-        this.router.navigate(['selectionProcesses/' + this.selectionProcessId + '/documents']);
+        this.router.navigate(['selectionProcesses', this.selectionProcessId]);
       });
   }
 

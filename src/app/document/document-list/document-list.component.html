@@ -1,34 +1,48 @@
-<h4 class="display-4">Documents</h4>
-<p class="lead mb-4">These are all the current available documents for vacancy {{this.selectionProcessEntity.vacancy}}.</p>
+<div class="card w-100 mb-2">
+  <div class="card-body">
+    <h5 class="card-title">Documents</h5>
 
-<div class="card mb-1" *ngFor="let document of documents">
-  <div class="card-block row m-1 col-12">
-    <div class="card-body row align-items-center">
-      <div class="col-3 mt-1">
-        <h6 class="card-subtitle text-muted">Documents</h6>
-        <a class="card-text" [routerLink]="['/documents', document.id]">{{document.title}}</a>
-      </div>
-      <div class="col-3 mt-1">
-        <h6 class="card-subtitle text-muted">DocType</h6>
-        <!--<p class="card-text">{{(codes | filter : {'name':document.docType})[0].value}}</p>-->
-        <p class="card-text">{{this.document.getDocTypeLabel()}}</p>
-      </div>
-
-      <div *ngIf="document.path != null; then thenBlock else elseBlock"></div>
-      <ng-template #thenBlock><div class="col-3 mt-1">
-        <button type="button" (click)="onDownloadFile(document.id)" class="btn btn-sm btn-success ml-2"><span class="fa fa-download"></span></button>
-        <button type="button" (click)="onOpenFile(document.id, document.mime)" class="btn btn-sm btn-warning ml-2"><span class="fa fa-eye"></span></button>
-      </div></ng-template>
-      <ng-template #elseBlock><div class="col-3 mt-1">
-        <h6 class="card-subtitle text-muted">No file has been uploaded</h6>
-      </div></ng-template>
-      <div class="col-3 mt-1">
-        <button type="button" (click)="onDocumentDelete(document.id)" class="btn btn-sm btn-danger"><span class="fa fa-times"></span></button>
+    <div class="btn-toolbar mb-2">
+      <div class="btn-group mr-2 ml-auto" role="group">
+        <button type="button" [routerLink]="['documents', 'create']" class="btn btn-sm btn-success"><span class="fas fa-plus"></span> Create</button>
       </div>
     </div>
+
+      <div class="card mb-1" *ngFor="let document of documents">
+        <div class="card-block row m-1 col-12">
+          <div class="card-body row align-items-center">
+            <div class="col-3 mt-1">
+              <h6 class="card-subtitle text-muted">Documents</h6>
+              <a class="card-text" [routerLink]="['/documents', document.id]">{{document.title}}</a>
+            </div>
+            <div class="col-3 mt-1">
+              <h6 class="card-subtitle text-muted">DocType</h6>
+              <!--<p class="card-text">{{(codes | filter : {'name':document.docType})[0].value}}</p>-->
+              <p class="card-text">{{this.document.getDocTypeLabel()}}</p>
+            </div>
+
+            <div *ngIf="document.path != null; then thenBlock else elseBlock"></div>
+            <ng-template #thenBlock><div class="col-3 mt-1">
+              <button type="button" (click)="onDownloadFile(document.id)" class="btn btn-sm btn-success ml-2"><span class="fa fa-download"></span></button>
+              <button type="button" (click)="onOpenFile(document.id, document.mime)" class="btn btn-sm btn-warning ml-2"><span class="fa fa-eye"></span></button>
+            </div></ng-template>
+            <ng-template #elseBlock><div class="col-3 mt-1">
+              <h6 class="card-subtitle text-muted">No file has been uploaded</h6>
+            </div></ng-template>
+            <div class="col-3 mt-1">
+              <button type="button" (click)="onDocumentDelete(document.id)" class="btn btn-sm btn-danger"><span class="fa fa-times"></span></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ngb-pagination class="d-flex justify-content-center"
+                      [(page)]="page" [pageSize]="pageSize" [collectionSize]="totalDocuments"
+                      (pageChange)="changePage()"></ngb-pagination>
+
+
+
+
   </div>
 </div>
 
-<ngb-pagination class="d-flex justify-content-center"
-                [(page)]="page" [pageSize]="pageSize" [collectionSize]="totalDocuments"
-                (pageChange)="changePage()"></ngb-pagination>
+
