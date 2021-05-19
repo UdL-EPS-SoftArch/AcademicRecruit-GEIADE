@@ -25,8 +25,15 @@ import { UserRegisterComponent } from './user/user-register/user-register.compon
 import { UserEditComponent } from './user/user-edit/user-edit.component';
 import { UserDeleteComponent } from './user/user-delete/user-delete.component';
 import { UserSearchComponent } from './user/user-search/user-search.component';
+import { DocumentListComponent } from './document/document-list/document-list.component';
+import { CandidateListComponent } from './candidate/candidate-list/candidate-list.component';
+
 import { SelectionProcessCreateComponent } from './selection-process/selection-process-create/selection-process-create.component';
 import { SelectionProcessListComponent } from './selection-process/selection-process-list/selection-process-list.component';
+import { DocumentService } from './document/document.service';
+import { DocumentCreateComponent } from './document/document-create/document-create.component';
+import { DocumentEditComponent } from './document/document-edit/document-edit.component';
+import { SelectionProcessEditComponent } from './selection-process/selection-process-edit/selection-process-edit.component';
 import { SelectionProcessDetailComponent } from './selection-process/selection-process-detail/selection-process-detail.component';
 
 @NgModule({
@@ -41,8 +48,13 @@ import { SelectionProcessDetailComponent } from './selection-process/selection-p
     UserSearchComponent,
     SelectionProcessCreateComponent,
     SelectionProcessListComponent,
+    CandidateListComponent,
     SelectionProcessCreateComponent,
-    SelectionProcessDetailComponent
+    SelectionProcessEditComponent,
+    SelectionProcessDetailComponent,
+    DocumentListComponent,
+    DocumentCreateComponent,
+    DocumentEditComponent
   ],
   imports: [
     BrowserModule,
@@ -56,13 +68,13 @@ import { SelectionProcessDetailComponent } from './selection-process/selection-p
     LoginBasicModule,
     ErrorHandlerModule,
     NgbModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
     { provide: 'ExternalConfigurationService', useClass: ExternalConfigurationService },
-    AuthenticationBasicService, LoggedInGuard, UserService, SelectionProcessService
+    AuthenticationBasicService, LoggedInGuard, UserService, SelectionProcessService, DocumentService
   ],
   bootstrap: [AppComponent]
 })
