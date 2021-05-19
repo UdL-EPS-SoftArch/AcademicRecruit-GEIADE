@@ -35,6 +35,7 @@ import { DocumentCreateComponent } from './document/document-create/document-cre
 import { DocumentEditComponent } from './document/document-edit/document-edit.component';
 import { SelectionProcessEditComponent } from './selection-process/selection-process-edit/selection-process-edit.component';
 import { SelectionProcessDetailComponent } from './selection-process/selection-process-detail/selection-process-detail.component';
+import { SelectionProcessDeleteComponent } from './selection-process/selection-process-delete/selection-process-delete.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { SelectionProcessDetailComponent } from './selection-process/selection-p
     SelectionProcessDetailComponent,
     DocumentListComponent,
     DocumentCreateComponent,
-    DocumentEditComponent
+    DocumentEditComponent,
+    SelectionProcessDeleteComponent
   ],
   imports: [
     BrowserModule,
