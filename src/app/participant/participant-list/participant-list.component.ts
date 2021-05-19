@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {Location} from '@angular/common';
 import {Sort} from '@lagoshny/ngx-hal-client';
-import {Participant} from "../participant";
-import {ParticipantService} from "../participant.service";
+import {Participant} from '../participant';
+import {ParticipantService} from '../participant.service';
 
 @Component({
   selector: 'app-participant-list',
