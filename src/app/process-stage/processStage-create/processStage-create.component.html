@@ -6,7 +6,7 @@
 
     <!-- Title input -->
     <div class="form-group" [class.was-validated]="title.dirty || title.touched">
-      <label class="control-label" for="title">Title*</label>
+      <label class="control-label" for="title">Name*</label>
       <input id="title" name="title" type="text" class="form-control" required
              [(ngModel)]="processStage.name" #title="ngModel">
       <div class="invalid-feedback">A title is required</div>
