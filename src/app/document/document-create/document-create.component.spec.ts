@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DocumentCreateComponent } from './document-create.component';
 
-describe('DocumentCreateComponent', () => {
+describe('CandidateCreateComponent', () => {
   let component: DocumentCreateComponent;
   let fixture: ComponentFixture<DocumentCreateComponent>;
 

@@ -55,4 +55,10 @@ export class CandidateListComponent implements OnInit {
       });
   }
 
+  onCandidateDelete(fileId: number): void {
+    this.candidateService.delete(this.candidates.find(d => d.id === fileId)).subscribe(result => {
+      this.ngOnInit();
+    });
+  }
+
 }
