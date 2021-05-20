@@ -27,7 +27,7 @@ export class SelectionProcessDeleteComponent implements OnInit {
   delete(): void {
     this.selectionProcessService.delete(this.selectionProcess).subscribe(
       () => {
-        this.router.navigate(['selectionProcesses'])
+        this.router.navigate(['selectionProcesses']);
       });
   }
 

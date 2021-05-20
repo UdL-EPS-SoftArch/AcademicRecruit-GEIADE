@@ -19,7 +19,6 @@ export class SelectionProcessDetailComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
     this.selectionProcessService.get(this.id).subscribe((selectionProcess: SelectionProcess) => {
-      console.log('SELECTION PROCESS', selectionProcess)
       this.selectionProcess = selectionProcess;
       // TO-DO: Get all relations
     });
