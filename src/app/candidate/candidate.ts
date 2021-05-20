@@ -1,12 +1,11 @@
 import { Resource } from '@lagoshny/ngx-hal-client';
-import {User} from '../login-basic/user';
+import {SelectionProcess} from '../selection-process/selection-process';
 
 export class Candidate extends Resource {
+  id: number;
   name: string;
-  dni: string;
-  candidate: Candidate;
-  // selectionProcess: SelectionProcess;
-  user: User;
+
+  selectionProcess: SelectionProcess;
 
   uri: string;
 

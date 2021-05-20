@@ -8,15 +8,15 @@ import { UserDetailComponent } from './user/user-detail/user-detail.component';
 import { UserRegisterComponent } from './user/user-register/user-register.component';
 import { UserEditComponent } from './user/user-edit/user-edit.component';
 import { UserDeleteComponent } from './user/user-delete/user-delete.component';
-import { DocumentListComponent } from './document/document-list/document-list.component';
 import { DocumentCreateComponent } from './document/document-create/document-create.component';
 import { DocumentEditComponent } from './document/document-edit/document-edit.component';
-import { CandidateListComponent } from './candidate/candidate-list/candidate-list.component';
 import { SelectionProcessCreateComponent } from './selection-process/selection-process-create/selection-process-create.component';
 import { SelectionProcessListComponent } from './selection-process/selection-process-list/selection-process-list.component';
 import { SelectionProcessEditComponent } from './selection-process/selection-process-edit/selection-process-edit.component';
 import { SelectionProcessDetailComponent } from './selection-process/selection-process-detail/selection-process-detail.component';
 import { SelectionProcessDeleteComponent } from './selection-process/selection-process-delete/selection-process-delete.component';
+import {CandidateCreateComponent} from './candidate/candidate-create/candidate-create.component';
+import {CandidateEditComponent} from './candidate/candidate-edit/candidate-edit.component';
 
 const routes: Routes = [
   { path: 'users/create', component: UserRegisterComponent},
@@ -24,10 +24,10 @@ const routes: Routes = [
   { path: 'users/:id/edit', component: UserEditComponent, canActivate: [LoggedInGuard]},
   { path: 'users/:id', component: UserDetailComponent, canActivate: [LoggedInGuard]},
   { path: 'users', component: UserListComponent, canActivate: [LoggedInGuard]},
-  { path: 'candidates', component: CandidateListComponent, canActivate: [LoggedInGuard]},
-  { path: 'selectionProcesses/:id/documents', component: DocumentListComponent, canActivate: [LoggedInGuard]},
+  { path: 'selectionProcesses/:id/candidates/create', component: CandidateCreateComponent, canActivate: [LoggedInGuard]},
   { path: 'selectionProcesses/:id/documents/create', component: DocumentCreateComponent, canActivate: [LoggedInGuard]},
   { path: 'documents/:id', component: DocumentEditComponent, canActivate: [LoggedInGuard]},
+  { path: 'candidates/:id', component: CandidateEditComponent, canActivate: [LoggedInGuard]},
   { path: 'selectionProcesses/create', component: SelectionProcessCreateComponent, canActivate: [LoggedInGuard]},
   { path: 'selectionProcesses/:id/edit', component: SelectionProcessEditComponent, canActivate: [LoggedInGuard]},
   { path: 'selectionProcesses/:id/delete', component: SelectionProcessDeleteComponent, canActivate: [LoggedInGuard]},
