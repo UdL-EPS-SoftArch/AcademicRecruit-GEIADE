@@ -16,4 +16,13 @@ export class ProcessStage extends Resource {
     super();
     Object.assign(this as any, values);
   }
+
+  public getBeginDate(): string {
+    return this.beginDate.toLocaleString();
+  }
+
+  public getEndDate(): string {
+    return this.endDate.toLocaleString();
+  }
+
 }

@@ -30,10 +30,10 @@
       <div class="invalid-feedback">A step is required</div>
     </div>
 
-    <div class="form-group" [class.was-validated]="beginDate.dirty || beginDate.touched">
+    <div class="form-group">
       <label class="control-label" for="beginDate">BeginDate*</label>
       <input id="beginDate" name="beginDate" type="datetime-local" class="form-control" required
-             [(ngModel)]="processStageEntity.beginDate" #beginDate="ngModel">
+             value="{{processStageEntity.getBeginDate()}}">
       <div class="invalid-feedback">A beginDate is required</div>
     </div>
 

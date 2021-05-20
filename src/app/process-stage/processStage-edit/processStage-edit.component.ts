@@ -38,6 +38,7 @@ export class ProcessStageEditComponent implements OnInit {
     this.processStageService.get(this.processStageId).subscribe(
       (processStageEntity: ProcessStage) => {
         this.processStageEntity = processStageEntity;
+        console.log(this.processStageEntity);
         this.selectionProcessService.getSelectionProcessFromProcessStage(this.processStageEntity).subscribe(
           (selectionProcessEntity: SelectionProcess) => {
                 this.selectionProcessEntity = selectionProcessEntity;
