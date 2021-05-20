@@ -7,6 +7,6 @@ import { Participant } from './participant';
 })
 export class ParticipantService extends RestService<Participant> {
   constructor(injector: Injector) {
-    super(Participant, 'participant', injector);
+    super(Participant, 'participants', injector);
   }
 }

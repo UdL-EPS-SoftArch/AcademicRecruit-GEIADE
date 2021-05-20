@@ -1,5 +1,5 @@
-<h4 class="display-4">Candidates</h4>
-<p class="lead mb-4">These are all the current Participants in AcademicRecruit.</p>
+<h4 class="display-4">Participants</h4>
+<p class="lead mb-4">The current Participants in AcademicRecruit are shown below:</p>
 
 <div class="card mb-1" *ngFor="let participant of participants">
   <div class="card-block row m-1 col-12">
@@ -21,3 +21,4 @@
 <ngb-pagination class="d-flex justify-content-center"
                 [(page)]="page" [pageSize]="pageSize" [collectionSize]="totalParticipants"
                 (pageChange)="changePage()"></ngb-pagination>
+

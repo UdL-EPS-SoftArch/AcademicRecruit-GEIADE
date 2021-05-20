@@ -10,6 +10,7 @@ import {ParticipantService} from '../participant.service';
   templateUrl: './participant-list.component.html',
   styleUrls: ['./participant-list.component.css']
 })
+
 export class ParticipantListComponent implements OnInit {
 
   public participants: Participant[] = [];
