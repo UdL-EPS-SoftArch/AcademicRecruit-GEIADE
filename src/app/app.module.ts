@@ -37,6 +37,9 @@ import { SelectionProcessEditComponent } from './selection-process/selection-pro
 import { SelectionProcessDetailComponent } from './selection-process/selection-process-detail/selection-process-detail.component';
 import {ParticipantListComponent} from "./participant/participant-list/participant-list.component";
 import {ParticipantService} from "./participant/participant.service";
+import {CandidateCreateComponent} from './candidate/candidate-create/candidate-create.component';
+import {CandidateEditComponent} from './candidate/candidate-edit/candidate-edit.component';
+
 
 @NgModule({
   declarations: [
@@ -58,6 +61,9 @@ import {ParticipantService} from "./participant/participant.service";
     DocumentCreateComponent,
     DocumentEditComponent,
     ParticipantListComponent
+    DocumentEditComponent,
+    CandidateCreateComponent,
+    CandidateEditComponent
   ],
   imports: [
     BrowserModule,
