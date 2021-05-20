@@ -1,23 +1,28 @@
-<h4 class="display-4">Candidates</h4>
-<p class="lead mb-4">These are all the current Candidates in AcademicRecruit.</p>
+<div class="card w-100 mb-2">
+  <div class="card-body">
+    <h5 class="card-title">Candidates</h5>
 
-<div class="card mb-1" *ngFor="let candidate of candidates">
-  <div class="card-block row m-1 col-12">
-    <div class="card-body row align-items-center">
-      <div class="col-6 mt-1">
-        <h6 class="card-subtitle text-muted">DNI</h6>
-        <a class="card-text" [routerLink]="['/candidates', candidate.id]">{{candidate.dni}}</a>
-      </div>
-      <div class="col-6 mt-1">
-        <h6 class="card-subtitle text-muted">Name</h6>
-        <p class="card-text">{{candidate.name}}</p>
+    <div class="btn-toolbar mb-2">
+      <div class="btn-group mr-2 ml-auto" role="group">
+        <button type="button" [routerLink]="['candidates', 'create']" class="btn btn-sm btn-success"><span class="fas fa-plus"></span> Create</button>
       </div>
     </div>
+
+    <div class="card mb-1 card-shadow" *ngFor="let candidate of candidates">
+      <div class="card-block row m-1 col-12">
+        <div class="card-body row align-items-center">
+          <div class="col-3 mt-1">
+            <h6 class="card-subtitle text-muted">Documents</h6>
+            <a class="card-text" [routerLink]="['/candidates', candidate.id]">{{candidate.name}}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ngb-pagination class="d-flex justify-content-center"
+                    [(page)]="page" [pageSize]="pageSize" [collectionSize]="totalCandidates"
+                    (pageChange)="changePage()"></ngb-pagination>
+
   </div>
 </div>
 
 
-
-<ngb-pagination class="d-flex justify-content-center"
-                [(page)]="page" [pageSize]="pageSize" [collectionSize]="totalCandidates"
-                (pageChange)="changePage()"></ngb-pagination>
