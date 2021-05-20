@@ -38,6 +38,9 @@ import { SelectionProcessDetailComponent } from './selection-process/selection-p
 import {ProcessStageCreateComponent} from './process-stage/processStage-create/processStage-create.component';
 import {ProcessStageListComponent} from './process-stage/processStage.list/processStage-list.component';
 import {ProcessStageEditComponent} from "./process-stage/processStage-edit/processStage-edit.component";
+import {CandidateCreateComponent} from './candidate/candidate-create/candidate-create.component';
+import {CandidateEditComponent} from './candidate/candidate-edit/candidate-edit.component';
+
 
 @NgModule({
   declarations: [
@@ -61,6 +64,9 @@ import {ProcessStageEditComponent} from "./process-stage/processStage-edit/proce
     ProcessStageCreateComponent,
     ProcessStageListComponent,
     ProcessStageEditComponent
+    DocumentEditComponent,
+    CandidateCreateComponent,
+    CandidateEditComponent
   ],
   imports: [
     BrowserModule,
