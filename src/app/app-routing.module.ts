@@ -17,6 +17,7 @@ import { SelectionProcessDetailComponent } from './selection-process/selection-p
 import { SelectionProcessDeleteComponent } from './selection-process/selection-process-delete/selection-process-delete.component';
 import {CandidateCreateComponent} from './candidate/candidate-create/candidate-create.component';
 import {CandidateEditComponent} from './candidate/candidate-edit/candidate-edit.component';
+import {ParticipantListComponent} from './participant/participant-list/participant-list.component';
 
 const routes: Routes = [
   { path: 'users/create', component: UserRegisterComponent},
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'selectionProcesses/:id/documents/create', component: DocumentCreateComponent, canActivate: [LoggedInGuard]},
   { path: 'documents/:id', component: DocumentEditComponent, canActivate: [LoggedInGuard]},
   { path: 'candidates/:id', component: CandidateEditComponent, canActivate: [LoggedInGuard]},
+  { path: 'participants', component: ParticipantListComponent, canActivate: [LoggedInGuard]},
   { path: 'selectionProcesses/create', component: SelectionProcessCreateComponent, canActivate: [LoggedInGuard]},
   { path: 'selectionProcesses/:id/edit', component: SelectionProcessEditComponent, canActivate: [LoggedInGuard]},
   { path: 'selectionProcesses/:id/delete', component: SelectionProcessDeleteComponent, canActivate: [LoggedInGuard]},

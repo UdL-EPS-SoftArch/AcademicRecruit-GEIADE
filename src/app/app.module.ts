@@ -35,6 +35,8 @@ import { DocumentCreateComponent } from './document/document-create/document-cre
 import { DocumentEditComponent } from './document/document-edit/document-edit.component';
 import { SelectionProcessEditComponent } from './selection-process/selection-process-edit/selection-process-edit.component';
 import { SelectionProcessDetailComponent } from './selection-process/selection-process-detail/selection-process-detail.component';
+import {ParticipantListComponent} from './participant/participant-list/participant-list.component';
+import {ParticipantService} from './participant/participant.service';
 import { SelectionProcessDeleteComponent } from './selection-process/selection-process-delete/selection-process-delete.component';
 import {CandidateCreateComponent} from './candidate/candidate-create/candidate-create.component';
 import {CandidateEditComponent} from './candidate/candidate-edit/candidate-edit.component';
@@ -59,6 +61,8 @@ import {CandidateEditComponent} from './candidate/candidate-edit/candidate-edit.
     DocumentListComponent,
     DocumentCreateComponent,
     DocumentEditComponent,
+    ParticipantListComponent,
+    DocumentEditComponent,
     SelectionProcessDeleteComponent,
     CandidateCreateComponent,
     CandidateEditComponent
@@ -81,7 +85,7 @@ import {CandidateEditComponent} from './candidate/candidate-edit/candidate-edit.
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
     { provide: 'ExternalConfigurationService', useClass: ExternalConfigurationService },
-    AuthenticationBasicService, LoggedInGuard, UserService, SelectionProcessService, DocumentService
+    AuthenticationBasicService, LoggedInGuard, UserService, SelectionProcessService, DocumentService, ParticipantService
   ],
   bootstrap: [AppComponent]
 })
