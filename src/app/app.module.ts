@@ -35,8 +35,8 @@ import { DocumentCreateComponent } from './document/document-create/document-cre
 import { DocumentEditComponent } from './document/document-edit/document-edit.component';
 import { SelectionProcessEditComponent } from './selection-process/selection-process-edit/selection-process-edit.component';
 import { SelectionProcessDetailComponent } from './selection-process/selection-process-detail/selection-process-detail.component';
-import {ParticipantListComponent} from "./participant/participant-list/participant-list.component";
-import {ParticipantService} from "./participant/participant.service";
+import {ParticipantListComponent} from './participant/participant-list/participant-list.component';
+import {ParticipantService} from './participant/participant.service';
 import {CandidateCreateComponent} from './candidate/candidate-create/candidate-create.component';
 import {CandidateEditComponent} from './candidate/candidate-edit/candidate-edit.component';
 
