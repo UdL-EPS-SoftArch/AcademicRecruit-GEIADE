@@ -9,7 +9,7 @@ import {SelectionProcess} from '../selection-process/selection-process';
 })
 export class ProcessStageService extends RestService<ProcessStage>{
   constructor(injector: Injector) {
-    super(ProcessStage, 'documents', injector);
+    super(ProcessStage, 'processStages', injector);
   }
 
 
