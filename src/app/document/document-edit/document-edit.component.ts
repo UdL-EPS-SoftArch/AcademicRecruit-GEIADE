@@ -10,6 +10,8 @@ import {FileService} from '../file.service';
 import {NgbModal, ModalDismissReasons, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
 import {ErrorMessageService} from '../../error-handler/error-message.service';
 import {HttpEventType} from '@angular/common/http';
+import {Candidate} from '../../candidate/candidate';
+import {CandidateService} from '../../candidate/candidate.service';
 
 @Component({
   selector: 'app-document-edit',
@@ -22,6 +24,7 @@ export class DocumentEditComponent implements OnInit {
 
   private documentId: string;
   public selectionProcessEntity: SelectionProcess;
+  public candidateEntity: Candidate;
   public documentEntity: Document;
   public percentageUpload: number;
 
@@ -34,6 +37,7 @@ export class DocumentEditComponent implements OnInit {
               private selectionProcessService: SelectionProcessService,
               private fileService: FileService,
               private modalService: NgbModal,
+              private candidateService: CandidateService,
               private errorMessageService: ErrorMessageService) { }
 
   ngOnInit(): void {
@@ -42,11 +46,18 @@ export class DocumentEditComponent implements OnInit {
     this.documentService.get(this.documentId).subscribe(
       (documentEntity: Document) => {
         this.documentEntity = documentEntity;
+
         this.selectionProcessService.getSelectionProcessFromDocument(this.documentEntity).subscribe(
           (selectionProcessEntity: SelectionProcess) => {
                 this.selectionProcessEntity = selectionProcessEntity;
           }, error1 => {
             this.location.back();
+          });
+
+        this.candidateService.getCandidateFromDocument(this.documentEntity).subscribe(
+          (candidateEntity: Candidate) => {
+            this.candidateEntity = candidateEntity;
+            console.log(this.candidateEntity);
           });
       }, error1 => {
         this.location.back();
