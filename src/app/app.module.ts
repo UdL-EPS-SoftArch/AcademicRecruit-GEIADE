@@ -60,7 +60,7 @@ import {CandidateEditComponent} from './candidate/candidate-edit/candidate-edit.
     DocumentListComponent,
     DocumentCreateComponent,
     DocumentEditComponent,
-    ParticipantListComponent
+    ParticipantListComponent,
     DocumentEditComponent,
     CandidateCreateComponent,
     CandidateEditComponent
