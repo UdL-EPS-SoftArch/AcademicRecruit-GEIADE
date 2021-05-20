@@ -38,6 +38,9 @@ import { SelectionProcessDetailComponent } from './selection-process/selection-p
 import {ProcessStageCreateComponent} from './process-stage/processStage-create/processStage-create.component';
 import {ProcessStageListComponent} from './process-stage/processStage.list/processStage-list.component';
 import {ProcessStageEditComponent} from './process-stage/processStage-edit/processStage-edit.component';
+import {ParticipantListComponent} from './participant/participant-list/participant-list.component';
+import {ParticipantService} from './participant/participant.service';
+import { SelectionProcessDeleteComponent } from './selection-process/selection-process-delete/selection-process-delete.component';
 import {CandidateCreateComponent} from './candidate/candidate-create/candidate-create.component';
 import {CandidateEditComponent} from './candidate/candidate-edit/candidate-edit.component';
 
@@ -61,6 +64,9 @@ import {CandidateEditComponent} from './candidate/candidate-edit/candidate-edit.
     DocumentListComponent,
     DocumentCreateComponent,
     DocumentEditComponent,
+    ParticipantListComponent,
+    DocumentEditComponent,
+    SelectionProcessDeleteComponent,
     ProcessStageCreateComponent,
     ProcessStageListComponent,
     ProcessStageEditComponent,
@@ -85,7 +91,7 @@ import {CandidateEditComponent} from './candidate/candidate-edit/candidate-edit.
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
     { provide: 'ExternalConfigurationService', useClass: ExternalConfigurationService },
-    AuthenticationBasicService, LoggedInGuard, UserService, SelectionProcessService, DocumentService
+    AuthenticationBasicService, LoggedInGuard, UserService, SelectionProcessService, DocumentService, ParticipantService
   ],
   bootstrap: [AppComponent]
 })
