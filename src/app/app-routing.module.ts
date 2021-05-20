@@ -16,7 +16,6 @@ import { SelectionProcessCreateComponent } from './selection-process/selection-p
 import { SelectionProcessListComponent } from './selection-process/selection-process-list/selection-process-list.component';
 import { SelectionProcessEditComponent } from './selection-process/selection-process-edit/selection-process-edit.component';
 import { SelectionProcessDetailComponent } from './selection-process/selection-process-detail/selection-process-detail.component';
-import {ParticipantListComponent} from "./participant/participant-list/participant-list.component";
 
 const routes: Routes = [
   { path: 'users/create', component: UserRegisterComponent},
@@ -25,8 +24,6 @@ const routes: Routes = [
   { path: 'users/:id', component: UserDetailComponent, canActivate: [LoggedInGuard]},
   { path: 'users', component: UserListComponent, canActivate: [LoggedInGuard]},
   { path: 'candidates', component: CandidateListComponent, canActivate: [LoggedInGuard]},
-  { path: 'participants', component: ParticipantListComponent, canActivate: [LoggedInGuard]},
-  { path: 'selectionProcesses/:id/documents', component: DocumentListComponent, canActivate: [LoggedInGuard]},
   { path: 'selectionProcesses/:id/documents/create', component: DocumentCreateComponent, canActivate: [LoggedInGuard]},
   { path: 'documents/:id', component: DocumentEditComponent, canActivate: [LoggedInGuard]},
   { path: 'selectionProcesses/create', component: SelectionProcessCreateComponent, canActivate: [LoggedInGuard]},
