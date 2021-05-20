@@ -37,7 +37,7 @@ import { SelectionProcessEditComponent } from './selection-process/selection-pro
 import { SelectionProcessDetailComponent } from './selection-process/selection-process-detail/selection-process-detail.component';
 import {ProcessStageCreateComponent} from './process-stage/processStage-create/processStage-create.component';
 import {ProcessStageListComponent} from './process-stage/processStage.list/processStage-list.component';
-import {ProcessStageEditComponent} from "./process-stage/processStage-edit/processStage-edit.component";
+import {ProcessStageEditComponent} from './process-stage/processStage-edit/processStage-edit.component';
 import {CandidateCreateComponent} from './candidate/candidate-create/candidate-create.component';
 import {CandidateEditComponent} from './candidate/candidate-edit/candidate-edit.component';
 
@@ -63,8 +63,7 @@ import {CandidateEditComponent} from './candidate/candidate-edit/candidate-edit.
     DocumentEditComponent,
     ProcessStageCreateComponent,
     ProcessStageListComponent,
-    ProcessStageEditComponent
-    DocumentEditComponent,
+    ProcessStageEditComponent,
     CandidateCreateComponent,
     CandidateEditComponent
   ],
