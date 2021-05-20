@@ -36,6 +36,7 @@ import { DocumentEditComponent } from './document/document-edit/document-edit.co
 import { SelectionProcessEditComponent } from './selection-process/selection-process-edit/selection-process-edit.component';
 import { SelectionProcessDetailComponent } from './selection-process/selection-process-detail/selection-process-detail.component';
 import {ProcessStageCreateComponent} from './process-stage/processStage-create/processStage-create.component';
+import {ProcessStageListComponent} from './process-stage/processStage.list/processStage-list.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import {ProcessStageCreateComponent} from './process-stage/processStage-create/p
     DocumentListComponent,
     DocumentCreateComponent,
     DocumentEditComponent,
-    ProcessStageCreateComponent
+    ProcessStageCreateComponent,
+    ProcessStageListComponent
   ],
   imports: [
     BrowserModule,

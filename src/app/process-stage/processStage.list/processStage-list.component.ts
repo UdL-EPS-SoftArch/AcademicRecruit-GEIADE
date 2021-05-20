@@ -7,16 +7,19 @@ import {ProcessStageService} from '../processStage.service';
 import {SelectionProcess} from '../../selection-process/selection-process';
 import {environment} from '../../../environments/environment';
 import {SelectionProcessService} from '../../selection-process/selection-process.service';
-import {User} from '../../login-basic/user';
 
 @Component({
-  selector: 'app-process-stage-create',
-  templateUrl: './processStage-create.component.html',
-  styleUrls: ['./processStage-create.component.css']
+  selector: 'app-process-stage-list',
+  templateUrl: './processStage-list.component.html',
+  styleUrls: ['./processStage-list.component.css']
 })
-export class ProcessStageCreateComponent implements OnInit {
+export class ProcessStageListComponent implements OnInit {
 
-  public processStage: ProcessStage;
+  public processStages: ProcessStage[] = [];
+  public pageSize = 6;
+  public page = 1;
+  public totalProcessStages = 0;
+  private sorting: Sort[] = [{ path: 'id', order: 'ASC' }];
   private selectionProcessId: string;
   public selectionProcessEntity: SelectionProcess;
 
@@ -28,23 +31,34 @@ export class ProcessStageCreateComponent implements OnInit {
 
   ngOnInit(): void {
     this.selectionProcessId = this.route.snapshot.paramMap.get('id');
+
     this.selectionProcessService.get(this.selectionProcessId).subscribe(
       (selectionProcessEntity: SelectionProcess) => {
         this.selectionProcessEntity = selectionProcessEntity;
-        this.processStage.selectionProcess = selectionProcessEntity;
       }
     );
-    this.processStage = new ProcessStage();
-  }
 
-  onSubmit(): void {
-    this.processStageService.create(this.processStage).subscribe(
-      (newProcessStage: ProcessStage) => {
-        this.router.navigate(['selectionProcesses/', this.selectionProcessId]);
+    const selectionProcess = new SelectionProcess();
+    selectionProcess.uri = '/selectionProcess/' + this.selectionProcessId;
+    this.processStageService.findBySelectionProcess(selectionProcess,
+      {size: this.pageSize, sort: this.sorting, params: [{key: 'page', value: this.page - 1}]}).subscribe(
+      (processStage: ProcessStage[]) => {
+        this.processStages = processStage;
+        this.totalProcessStages = this.processStageService.totalElement();
       });
   }
 
-  onCancel(): void {
-    this.location.back();
+  changePage(): void {
+    this.processStageService.page(this.page - 1).subscribe(
+      (processStage: ProcessStage[]) => {
+        this.processStages = processStage;
+      });
   }
+
+  onProcessStageDelete(fileId: number): void {
+    this.processStageService.delete(this.processStages.find(d => d.id === fileId)).subscribe(result => {
+      this.ngOnInit();
+    });
+  }
+
 }
