@@ -57,7 +57,7 @@ export class DocumentEditComponent implements OnInit {
   onSubmit(): void {
     this.documentService.update(this.documentEntity).subscribe(
       (newDocument: Document) => {
-        this.router.navigate(['selectionProcesses/' + this.selectionProcessEntity.id + '/documents']);
+        this.router.navigate(['selectionProcesses/', this.selectionProcessEntity.id]);
       });
   }
 
