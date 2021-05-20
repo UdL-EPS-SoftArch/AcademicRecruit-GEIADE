@@ -30,17 +30,21 @@
       <div class="invalid-feedback">A step is required</div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group" [class.was-validated]="beginDate.dirty || beginDate.touched">
       <label class="control-label" for="beginDate">BeginDate*</label>
       <input id="beginDate" name="beginDate" type="datetime-local" class="form-control" required
-             value="{{processStageEntity.getBeginDate()}}">
+             [ngModel]="processStageEntity.beginDate | date:'yyyy-MM-ddThh:mm'"
+             (ngModelChange)="processStageEntity.beginDate=$event"
+             #beginDate="ngModel">
       <div class="invalid-feedback">A beginDate is required</div>
     </div>
 
     <div class="form-group" [class.was-validated]="endDate.dirty || endDate.touched">
       <label class="control-label" for="endDate">EndDate*</label>
       <input id="endDate" name="endDate" type="datetime-local" class="form-control" required
-             [(ngModel)]="processStageEntity.endDate" #endDate="ngModel">
+             [ngModel]="processStageEntity.endDate | date:'yyyy-MM-ddThh:mm'"
+             (ngModelChange)="processStageEntity.endDate=$event"
+             #endDate="ngModel">
       <div class="invalid-feedback">A endDate is required</div>
     </div>
 

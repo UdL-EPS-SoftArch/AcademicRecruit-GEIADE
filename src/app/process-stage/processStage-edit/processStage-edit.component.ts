@@ -54,7 +54,7 @@ export class ProcessStageEditComponent implements OnInit {
   onSubmit(): void {
     this.processStageService.update(this.processStageEntity).subscribe(
       (newProcessStage: ProcessStage) => {
-        this.router.navigate(['selectionProcesses/' + this.selectionProcessEntity.id + '/processStage']);
+        this.router.navigate(['selectionProcesses/', this.selectionProcessEntity.id]);
       });
   }
 
