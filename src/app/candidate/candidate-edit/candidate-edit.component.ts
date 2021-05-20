@@ -11,7 +11,7 @@ import {Candidate} from '../candidate';
 import {CandidateService} from '../candidate.service';
 
 @Component({
-  selector: 'app-document-edit',
+  selector: 'app-candidate-edit',
   templateUrl: './candidate-edit.component.html',
   styleUrls: ['./candidate-edit.component.css']
 })

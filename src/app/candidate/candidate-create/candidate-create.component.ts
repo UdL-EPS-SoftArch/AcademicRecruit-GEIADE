@@ -7,7 +7,7 @@ import {Candidate} from '../candidate';
 import {CandidateService} from '../candidate.service';
 
 @Component({
-  selector: 'app-document-create',
+  selector: 'app-candidate-create',
   templateUrl: './candidate-create.component.html',
   styleUrls: ['./candidate-create.component.css']
 })

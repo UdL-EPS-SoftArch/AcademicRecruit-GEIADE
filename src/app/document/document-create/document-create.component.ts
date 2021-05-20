@@ -8,6 +8,7 @@ import {SelectionProcess} from '../../selection-process/selection-process';
 import {environment} from '../../../environments/environment';
 import {SelectionProcessService} from '../../selection-process/selection-process.service';
 import {User} from '../../login-basic/user';
+import {Candidate} from '../../candidate/candidate';
 
 @Component({
   selector: 'app-document-create',
@@ -54,5 +55,9 @@ export class DocumentCreateComponent implements OnInit {
     const name = e.target.value;
     const list = this.codes.find(x => x.value === name);
     this.document.docType = list.name;
+  }
+
+  detail(candidate: Candidate): void {
+    this.document.candidate = candidate;
   }
 }

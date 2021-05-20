@@ -37,6 +37,7 @@ import { SelectionProcessEditComponent } from './selection-process/selection-pro
 import { SelectionProcessDetailComponent } from './selection-process/selection-process-detail/selection-process-detail.component';
 import {CandidateCreateComponent} from './candidate/candidate-create/candidate-create.component';
 import {CandidateEditComponent} from './candidate/candidate-edit/candidate-edit.component';
+import {CandidateSearchComponent} from './candidate/candidate-search/candidate-search.component';
 
 
 @NgModule({
@@ -59,7 +60,8 @@ import {CandidateEditComponent} from './candidate/candidate-edit/candidate-edit.
     DocumentCreateComponent,
     DocumentEditComponent,
     CandidateCreateComponent,
-    CandidateEditComponent
+    CandidateEditComponent,
+    CandidateSearchComponent
   ],
   imports: [
     BrowserModule,
