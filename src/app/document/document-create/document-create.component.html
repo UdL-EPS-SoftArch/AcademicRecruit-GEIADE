@@ -20,13 +20,20 @@
       <div class="invalid-feedback">A document type is required</div>
     </div>
 
-    <!-- Candidate (not required)  -->
-    <!--<div class="form-group" [class.was-validated]="username.dirty || username.touched">
-      <label class="control-label" for="username">Username</label>
-      <input id="username" name="username" type="text" class="form-control"
-             [(ngModel)]="user.id" #username="ngModel">
-      <div class="invalid-feedback">A username is required</div>
-    </div>-->
+    <div class="form-group">
+      <label class="control-label">Candidate</label>
+
+      <div *ngIf="document.candidate != undefined; then thenBlock else elseBlock"></div>
+      <ng-template #thenBlock>
+        <input id="candidate" name="candidate" type="text" class="form-control" required disabled
+               [(ngModel)]="document.candidate.name" #title="ngModel">
+      </ng-template>
+      <ng-template #elseBlock>
+        <app-candidate-search (emitResults)="detail($event)"></app-candidate-search>
+      </ng-template>
+
+
+    </div>
 
     <!-- Button -->
     <div class="form-group">

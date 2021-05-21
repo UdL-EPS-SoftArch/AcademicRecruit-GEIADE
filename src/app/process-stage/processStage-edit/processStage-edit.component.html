@@ -1,0 +1,61 @@
+<h4 class="display-4">Process Stage</h4>
+<p class="lead mb-4">This process stage is for a selection process with vacancy {{this.selectionProcessEntity.vacancy}}.</p>
+
+<ng-template #dialogRef>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Uploading file</h4>
+  </div>
+  <div class="modal-body">
+    <ngb-progressbar type="warning" [value]="this.percentageUpload" [striped]="true"></ngb-progressbar>
+  </div>
+  <div class="modal-footer">
+
+  </div>
+</ng-template>
+
+<form id="document-form" (ngSubmit)="onSubmit()" #form="ngForm">
+  <fieldset>
+
+    <!-- Title input -->
+    <div class="form-group" [class.was-validated]="title.dirty || title.touched">
+      <label class="control-label" for="title">Name*</label>
+      <input id="title" name="title" type="text" class="form-control" required
+             [(ngModel)]="processStageEntity.name" #title="ngModel">
+      <div class="invalid-feedback">A name is required</div>
+    </div>
+    <div class="form-group" [class.was-validated]="step.dirty || step.touched">
+      <label class="control-label" for="step">Step*</label>
+      <input id="step" name="step" type="number" class="form-control" required
+             [(ngModel)]="processStageEntity.step" #step="ngModel">
+      <div class="invalid-feedback">A step is required</div>
+    </div>
+
+    <div class="form-group" [class.was-validated]="beginDate.dirty || beginDate.touched">
+      <label class="control-label" for="beginDate">BeginDate*</label>
+      <input id="beginDate" name="beginDate" type="datetime-local" class="form-control" required
+             [ngModel]="processStageEntity.beginDate | date:'yyyy-MM-ddThh:mm'"
+             (ngModelChange)="processStageEntity.beginDate=$event"
+             #beginDate="ngModel">
+      <div class="invalid-feedback">A beginDate is required</div>
+    </div>
+
+    <div class="form-group" [class.was-validated]="endDate.dirty || endDate.touched">
+      <label class="control-label" for="endDate">EndDate*</label>
+      <input id="endDate" name="endDate" type="datetime-local" class="form-control" required
+             [ngModel]="processStageEntity.endDate | date:'yyyy-MM-ddThh:mm'"
+             (ngModelChange)="processStageEntity.endDate=$event"
+             #endDate="ngModel">
+      <div class="invalid-feedback">A endDate is required</div>
+    </div>
+
+    <!-- Button -->
+    <div class="form-group">
+      <button id="submit" type="submit" class="btn m-1 btn-success pull-right" [disabled]="!form.form.valid">Submit</button>
+      <button id="listBtn" type="button" (click)="onCancel()" class="btn m-1 btn-outline-primary pull-right">Back</button>
+    </div>
+
+  </fieldset>
+</form>
+
+
+

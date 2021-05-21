@@ -14,6 +14,9 @@ import { SelectionProcessCreateComponent } from './selection-process/selection-p
 import { SelectionProcessListComponent } from './selection-process/selection-process-list/selection-process-list.component';
 import { SelectionProcessEditComponent } from './selection-process/selection-process-edit/selection-process-edit.component';
 import { SelectionProcessDetailComponent } from './selection-process/selection-process-detail/selection-process-detail.component';
+import {ProcessStageCreateComponent} from './process-stage/processStage-create/processStage-create.component';
+import {ProcessStageListComponent} from './process-stage/processStage.list/processStage-list.component';
+import {ProcessStageEditComponent} from './process-stage/processStage-edit/processStage-edit.component';
 import { SelectionProcessDeleteComponent } from './selection-process/selection-process-delete/selection-process-delete.component';
 import {CandidateCreateComponent} from './candidate/candidate-create/candidate-create.component';
 import {CandidateEditComponent} from './candidate/candidate-edit/candidate-edit.component';
@@ -30,6 +33,7 @@ const routes: Routes = [
   { path: 'documents/:id', component: DocumentEditComponent, canActivate: [LoggedInGuard]},
   { path: 'candidates/:id', component: CandidateEditComponent, canActivate: [LoggedInGuard]},
   { path: 'participants', component: ParticipantListComponent, canActivate: [LoggedInGuard]},
+  { path: 'processStages/:id', component: ProcessStageEditComponent, canActivate: [LoggedInGuard]},
   { path: 'selectionProcesses/create', component: SelectionProcessCreateComponent, canActivate: [LoggedInGuard]},
   { path: 'selectionProcesses/:id/edit', component: SelectionProcessEditComponent, canActivate: [LoggedInGuard]},
   { path: 'selectionProcesses/:id/delete', component: SelectionProcessDeleteComponent, canActivate: [LoggedInGuard]},
@@ -38,6 +42,7 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent},
   { path: '404', component: NotFoundComponent},
   { path: '', redirectTo: 'about', pathMatch: 'full'},
+  { path: 'selectionProcesses/:id/processStages/create', component: ProcessStageCreateComponent, canActivate: [LoggedInGuard]}
 ];
 
 @NgModule({

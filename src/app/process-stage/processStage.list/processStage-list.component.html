@@ -1,0 +1,42 @@
+<div class="card w-100 mb-2">
+  <div class="card-body">
+    <h5 class="card-title">Process Stage</h5>
+    <!--<p class="lead mb-4">These are all the current available process stage for vacancy {{this.selectionProcessEntity.vacancy}}.</p>-->
+
+    <div class="btn-toolbar mb-2">
+      <div class="btn-group mr-2 ml-auto" role="group">
+        <button type="button" [routerLink]="['processStages', 'create']" class="btn btn-sm btn-success"><span class="fas fa-plus"></span> Create</button>
+      </div>
+    </div>
+
+    <div class="card mb-1" *ngFor="let processStage of processStages">
+      <div class="card-block row m-1 col-12">
+        <div class="card-body row align-items-center">
+          <div class="col-3 mt-1">
+            <h6 class="card-subtitle text-muted">Process Stage</h6>
+            <a class="card-text" [routerLink]="['/processStages', processStage.id]">{{processStage.name}}</a>
+          </div>
+
+          <div class="col-3 mt-1">
+            <h6 class="card-subtitle text-muted">Step</h6>
+            <p class="card-text">{{processStage.step}}</p>
+          </div>
+
+          <div class="col-3 mt-1">
+            <h6 class="card-subtitle text-muted">Dates</h6>
+            <p class="mb-0 card-text">Begin Date: {{processStage.beginDate | date:'yyyy-MM-dd hh:mm'}}</p>
+            <p class="card-text">End Date: {{processStage.endDate | date:'yyyy-MM-dd hh:mm'}}</p>
+          </div>
+
+          <div class="col-3 mt-1">
+            <button type="button" (click)="onProcessStageDelete(processStage.id)" class="btn btn-sm btn-danger float-right"><span class="fa fa-times"></span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ngb-pagination class="d-flex justify-content-center"
+                    [(page)]="page" [pageSize]="pageSize" [collectionSize]="totalProcessStages"
+                    (pageChange)="changePage()"></ngb-pagination>
+  </div>
+</div>

@@ -1,41 +1,45 @@
 import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Location} from '@angular/common';
+import {ProcessStage} from '../processStage';
+import {ProcessStageService} from '../processStage.service';
 import {SelectionProcess} from '../../selection-process/selection-process';
 import {SelectionProcessService} from '../../selection-process/selection-process.service';
 
 import {NgbModal, ModalDismissReasons, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
 import {ErrorMessageService} from '../../error-handler/error-message.service';
 import {HttpEventType} from '@angular/common/http';
-import {Candidate} from '../candidate';
-import {CandidateService} from '../candidate.service';
 
 @Component({
-  selector: 'app-candidate-edit',
-  templateUrl: './candidate-edit.component.html',
-  styleUrls: ['./candidate-edit.component.css']
+  selector: 'app-process-stage-edit',
+  templateUrl: './processStage-edit.component.html',
+  styleUrls: ['./processStage-edit.component.css']
 })
-export class CandidateEditComponent implements OnInit {
+export class ProcessStageEditComponent implements OnInit {
 
   @ViewChild('dialogRef') dialogRef: TemplateRef<any>;
 
-  private candidateId: string;
+  private processStageId: string;
   public selectionProcessEntity: SelectionProcess;
-  public candidateEntity: Candidate;
+  public processStageEntity: ProcessStage;
+  public percentageUpload: number;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
               private location: Location,
-              private candidateService: CandidateService,
-              private selectionProcessService: SelectionProcessService) { }
+              private processStageService: ProcessStageService,
+              private selectionProcessService: SelectionProcessService,
+              private modalService: NgbModal,
+              private errorMessageService: ErrorMessageService) { }
 
   ngOnInit(): void {
-    this.candidateId = this.route.snapshot.paramMap.get('id');
+    this.processStageId = this.route.snapshot.paramMap.get('id');
 
-    this.candidateService.get(this.candidateId).subscribe(
-      (candidateEntity: Candidate) => {
-        this.candidateEntity = candidateEntity;
-        this.selectionProcessService.getSelectionProcessFromCandidate(this.candidateEntity).subscribe(
+    this.processStageService.get(this.processStageId).subscribe(
+      (processStageEntity: ProcessStage) => {
+        this.processStageEntity = processStageEntity;
+        console.log(this.processStageEntity);
+        this.selectionProcessService.getSelectionProcessFromProcessStage(this.processStageEntity).subscribe(
           (selectionProcessEntity: SelectionProcess) => {
                 this.selectionProcessEntity = selectionProcessEntity;
           }, error1 => {
@@ -48,8 +52,8 @@ export class CandidateEditComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.candidateService.update(this.candidateEntity).subscribe(
-      (newCandidate: Candidate) => {
+    this.processStageService.update(this.processStageEntity).subscribe(
+      (newProcessStage: ProcessStage) => {
         this.router.navigate(['selectionProcesses/', this.selectionProcessEntity.id]);
       });
   }

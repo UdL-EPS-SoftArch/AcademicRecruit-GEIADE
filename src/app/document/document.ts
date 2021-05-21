@@ -1,6 +1,7 @@
 import { Resource } from '@lagoshny/ngx-hal-client';
 import {User} from '../login-basic/user';
 import {SelectionProcess} from '../selection-process/selection-process';
+import {Candidate} from '../candidate/candidate';
 
 export class Document extends Resource {
   id: number;
@@ -10,7 +11,7 @@ export class Document extends Resource {
   length: number;
   mime: string;
 
-  // candidate: Candidate;
+  candidate: Candidate;
   selectionProcess: SelectionProcess;
   user: User;
 

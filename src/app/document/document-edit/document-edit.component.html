@@ -32,13 +32,18 @@
       <div class="invalid-feedback">A document type is required</div>
     </div>
 
-    <!-- Candidate (not required)  -->
-    <!--<div class="form-group" [class.was-validated]="username.dirty || username.touched">
-      <label class="control-label" for="username">Username</label>
-      <input id="username" name="username" type="text" class="form-control"
-             [(ngModel)]="user.id" #username="ngModel">
-      <div class="invalid-feedback">A username is required</div>
-    </div>-->
+    <div *ngIf="candidateEntity != undefined; then thenBlock2"></div>
+    <ng-template #thenBlock2>
+      <div class="form-group">
+        <label class="control-label" for="candidate">Candidate</label>
+        <input id="candidate" name="username" type="text" class="form-control"
+               [(ngModel)]="candidateEntity.name" disabled>
+      </div>
+    </ng-template>
+
+
+
+
 
     <div class="form-group">
       <label class="control-label" for="docTypes">Attached document</label>

@@ -4,6 +4,7 @@ import { SelectionProcess } from './selection-process';
 import {Document} from '../document/document';
 import {Observable} from 'rxjs/internal/Observable';
 import {Candidate} from '../candidate/candidate';
+import {ProcessStage} from '../process-stage/processStage';
 
 @Injectable()
 export class SelectionProcessService extends RestService<SelectionProcess> {
@@ -18,5 +19,8 @@ export class SelectionProcessService extends RestService<SelectionProcess> {
 
   public getSelectionProcessFromCandidate(candidate: Candidate): Observable<SelectionProcess> {
     return this.getByRelation(candidate._links.selectionProcess.href);
+  }
+  public getSelectionProcessFromProcessStage(processStage: ProcessStage): Observable<SelectionProcess> {
+    return this.getByRelation(processStage._links.selectionProcess.href);
   }
 }
